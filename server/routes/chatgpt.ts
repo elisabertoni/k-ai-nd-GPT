@@ -1,7 +1,7 @@
 import { Configuration, OpenAIApi } from 'openai'
 import express from 'express'
-import { Davinci003 } from '../../models/request-text-davinci-003'
-import { Response } from '../../models/response'
+
+import { RequestCompletion } from '../../models/request'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -22,18 +22,16 @@ const headers = {
 
 //  GET /api/v1/gpt/chat
 router.get('/chat', async (req, res) => {
-  const model: Davinci003 = {
+  const model: RequestCompletion = {
     model: 'text-davinci-003',
     prompt: 'how are you today',
     max_tokens: 7,
     temperature: 0,
   }
-
   try {
     const response = await openai.createCompletion(model, headers)
-    res.send(String(response))
+    res.send(response.data.choices[0].text)
   } catch (err) {
-    console.log(err)
     res.status(500).send(err != null && (err as Error).message)
   }
 })
