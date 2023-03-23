@@ -56,7 +56,6 @@ Cohort Member:
   try {
     const response = await openai.createCompletion(model, headers)
     const reply = response.data.choices[0].text?.replace(/\n/g,"")
-    // console.log(response.data.choices[0].text)
     res.json({ reply })
   } catch (err) {
     res.status(500).send(err != null && (err as Error).message)
