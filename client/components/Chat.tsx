@@ -41,12 +41,12 @@ export default function Chat() {
     <div>
       <form onSubmit={handleSubmit}>
         <textarea
-          className="textarea is-primary"
+          className="textarea is-primary is-medium"
           value={message}
           placeholder="Ask me anything ..."
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
-        <button type="submit">Submit</button>
+        <button className='button is-primary is-left' type="submit">Submit</button>
       </form>
       {JSON.stringify(response, null, 2)}
     </div>
