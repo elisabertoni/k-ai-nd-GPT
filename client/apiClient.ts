@@ -15,7 +15,7 @@ export function getWelcome(): Promise<Welcome> {
 
 //  GET /gpt/chat/:text
 export function sendMessage(): Promise<RequestChatCompletion> {
-  return request.get(`${serverURL}/gpt/chat/:text`).then((response) => response.body.reply)
+  return request
+    .get(`${serverURL}/gpt/chat`)
+    .then((response) => response.body.reply)
 }
-
-
