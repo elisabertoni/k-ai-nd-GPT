@@ -20,17 +20,28 @@ const headers = {
   },
 }
 
-//  GET /api/v1/gpt/chat
-router.get('/chat', async (req, res) => {
+//  POST /api/v1/gpt/chat
+
+// params: /chat/tell me something funny
+// query params: /chat?text=tell me something funny
+// POST body: { message: 'tell me something funny' }
+
+router.post('/chat', async (req, res) => {
+  const training = `You are a kind language model, who serves as a support to a team of learning Full Stack Web Developers.
+  `
+   
+  const { message } = req.body
+  
   const model: RequestCompletion = {
     model: 'text-davinci-003',
-    prompt: 'how are you today',
-    max_tokens: 7,
+    prompt: message,
+    max_tokens: 200,
     temperature: 0,
   }
   try {
     const response = await openai.createCompletion(model, headers)
-    res.send(response.data.choices[0].text)
+    console.log({reply: response.data.choices[0].text})
+    res.json({reply: response.data.choices[0].text})
   } catch (err) {
     res.status(500).send(err != null && (err as Error).message)
   }

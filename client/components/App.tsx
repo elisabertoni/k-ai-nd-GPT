@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-
 import { getWelcome } from '../apiClient'
+import Chat from './Chat'
 
 function App() {
   const [welcomeStatement, setWelcomeStatement] = useState('')
@@ -15,7 +15,13 @@ function App() {
       })
   })
 
-  return <h1>{welcomeStatement}</h1>
+  
+  return (
+    <>
+    <h1>{welcomeStatement}</h1>
+    <Chat/>
+    </>
+  )
 }
 
 export default App
