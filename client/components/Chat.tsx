@@ -46,9 +46,16 @@ export default function Chat() {
           placeholder="Ask me anything ..."
           onChange={(e) => setMessage(e.target.value)}
         ></textarea>
-        <button className='button is-primary is-left' type="submit">Submit</button>
+        <button className="button is-primary is-left" type="submit">
+          Submit
+        </button>
       </form>
-      {JSON.stringify(response, null, 2)}
+      <textarea
+        className="textarea is-primary is-medium"
+        value={JSON.stringify(response, null, 2).replace('""', '')}
+        placeholder=""
+        // onChange={(e) => setMessage(e.target.value)}
+      ></textarea>
     </div>
   )
 }
