@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import request from 'superagent'
 // fetch, superagent, axios
 
@@ -14,24 +14,24 @@ export default function Chat() {
     // request.post('/api/v1/gpt/chat').set('Content-Type', 'application/json').send({ message }).then((response) => {
     //   setResponse(response.body.reply)
     // })
-      
+
     // fetch(url, options)
     fetch('http://localhost:3000/api/v1/gpt/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({message})
+      body: JSON.stringify({ message }),
     })
-    .then((res) => res.json())
-    .then((data) => {
-      setPreviousMessages([...previousMessages, message])
-      setResponse(data.reply)
-    }).catch((err) => {
-      console.log(err)
-      setError('Something went wrong, come back soon!')
-    })
-
+      .then((res) => res.json())
+      .then((data) => {
+        setPreviousMessages([...previousMessages, message])
+        setResponse(data.reply)
+      })
+      .catch((err) => {
+        console.log(err)
+        setError('Something went wrong, come back soon!')
+      })
   }
 
   if (error) {
@@ -40,11 +40,15 @@ export default function Chat() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <textarea className="textarea is-primary" value={message} placeholder='Ask me anything ...' onChange={(e) => setMessage(e.target.value)}></textarea>
-        <button type='submit'>Submit</button>
+        <textarea
+          className="textarea is-primary"
+          value={message}
+          placeholder="Ask me anything ..."
+          onChange={(e) => setMessage(e.target.value)}
+        ></textarea>
+        <button type="submit">Submit</button>
       </form>
-    {JSON.stringify(response, null, 2)}
+      {JSON.stringify(response, null, 2)}
     </div>
   )
 }
-
