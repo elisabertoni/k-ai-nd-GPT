@@ -26,6 +26,9 @@ export default function Chat() {
     .then((res) => res.json())
     .then((data) => {
       setPreviousMessages([...previousMessages, message])
+      // console.log(data.reply)
+      // console.log(data.reply)
+      console.log(typeof data.reply)
       setResponse(data.reply)
     }).catch((err) => {
       console.log(err)
