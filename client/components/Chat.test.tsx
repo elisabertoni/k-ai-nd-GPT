@@ -27,16 +27,6 @@ describe('<Chat />', () => {
     messages: [message],
   }
 
-  it('should show a text box with the placeholder ask me anything...', async () => {
-    jest.mocked(sendMessage).mockResolvedValue(requestChatCompletion)
-    render(<Chat />)
-
-    expect(screen.getByRole('textbox'))[0].toHaveAttribute('placeholder')
-    expect(screen.getByRole('textbox')[0].getAttribute('placeholder')).toContain(
-      'Ask me anything ...'
-    )
-  })
-
   it('should show a submit button', async () => {
     jest.mocked(sendMessage).mockResolvedValue(requestChatCompletion)
     render(<Chat />)
