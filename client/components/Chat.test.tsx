@@ -31,8 +31,8 @@ describe('<Chat />', () => {
     jest.mocked(sendMessage).mockResolvedValue(requestChatCompletion)
     render(<Chat />)
 
-    expect(screen.getByRole('textbox')).toHaveAttribute('placeholder')
-    expect(screen.getByRole('textbox').getAttribute('placeholder')).toContain(
+    expect(screen.getByRole('textbox'))[0].toHaveAttribute('placeholder')
+    expect(screen.getByRole('textbox')[0].getAttribute('placeholder')).toContain(
       'Ask me anything ...'
     )
   })

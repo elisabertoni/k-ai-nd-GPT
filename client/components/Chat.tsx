@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import request from 'superagent'
+
 // fetch, superagent, axios
 
 export default function Chat() {
@@ -25,9 +25,10 @@ export default function Chat() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setPreviousMessages([...previousMessages, message])
+        setPreviousMessages([...previousMessages, message, data.reply])
         setResponse(data.reply)
       })
+      .finally(() => setMessage(''))
       .catch((err) => {
         console.log(err)
         setError('Something went wrong, come back soon!')
@@ -41,21 +42,24 @@ export default function Chat() {
     <div>
       <form onSubmit={handleSubmit}>
         <textarea
-          className="textarea is-primary is-medium"
+          className="textarea is-danger is-medium"
+          value={previousMessages.map((elem) => `${elem}\n\n`)}
+          placeholder=""
+          rows={12}
+        ></textarea>
+        <input
+          className="input is-danger is-medium"
+          type="text"
           value={message}
           placeholder="Ask me anything ..."
           onChange={(e) => setMessage(e.target.value)}
-        ></textarea>
-        <button className="button is-primary is-left" type="submit">
-          Submit
-        </button>
+        ></input>
+        <div className="">
+          <button className="button is-fullwidth is-danger mt-2" type="submit">
+            Submit
+          </button>
+        </div>
       </form>
-      <textarea
-        className="textarea is-primary is-medium"
-        value={JSON.stringify(response, null, 2).replace('""', '')}
-        placeholder=""
-        // onChange={(e) => setMessage(e.target.value)}
-      ></textarea>
     </div>
   )
 }

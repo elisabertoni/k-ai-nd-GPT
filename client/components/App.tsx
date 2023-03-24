@@ -19,8 +19,8 @@ function App() {
   return (
     <>
       <div className="columns">
-        <div className="column">
-          <Spotify link="https://open.spotify.com/album/4QyDwQaVSBAnGOcs6gv4TG?si=d18Zq07hSp62gODpTqfMjQ" />
+        <div className="column pb-6">
+          <Spotify className="column mt-6" link="https://open.spotify.com/album/4QyDwQaVSBAnGOcs6gv4TG?si=d18Zq07hSp62gODpTqfMjQ" />
         </div>
         <div className="column is-half">
           <h1 className="has-text-centered is-size-2 mt-4">
@@ -36,7 +36,7 @@ function App() {
         </div>
       </div>
       <div>
-        <footer className="has-text-centered m-4 p-4">
+        <footer className="has-text-centered mt-4 p-4">
           <div>&copy; BMO 2023</div>
           <div>
             Full Disclaimer: This website does not provide medical advice.
