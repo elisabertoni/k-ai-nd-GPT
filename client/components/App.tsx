@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Spotify } from 'react-spotify-embed'
 import { getWelcome } from '../apiClient'
 import Chat from './Chat'
 
