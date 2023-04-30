@@ -20,7 +20,6 @@ function App() {
     <>
       <div className="columns">
         <div className="column pb-6">
-          <Spotify className="column mt-6" link="https://open.spotify.com/album/4QyDwQaVSBAnGOcs6gv4TG?si=d18Zq07hSp62gODpTqfMjQ" />
         </div>
         <div className="column is-half">
           <h1 className="has-text-centered is-size-2 mt-4">
