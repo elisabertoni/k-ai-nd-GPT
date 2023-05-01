@@ -1,19 +1,6 @@
-import { useState, useEffect } from 'react'
-import { getWelcome } from '../apiClient'
 import Chat from './Chat'
 
 function App() {
-  const [welcomeStatement, setWelcomeStatement] = useState('')
-
-  useEffect(() => {
-    getWelcome()
-      .then((res) => {
-        setWelcomeStatement(res.statement)
-      })
-      .catch((err) => {
-        console.error(err.message)
-      })
-  })
 
   return (
     <>
@@ -22,7 +9,7 @@ function App() {
         </div>
         <div className="column is-half">
           <h1 className="has-text-centered is-size-2 mt-4">
-            {welcomeStatement}
+            Welcome to K-ai-ndGPT
           </h1>
           <h2 className="has-text-centered is-size-6 mb-4">
             Kind Gestures Powered by Tech
